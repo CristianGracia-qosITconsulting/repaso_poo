@@ -1,26 +1,22 @@
 package clases;
 
-import interfaces.Trabajador;
+import excepciones.DniException;
+import excepciones.EdadException;
+import excepciones.NombreException;
 
-public class Profesor extends Persona implements Trabajador{
+public class Profesor extends Persona{
+    //ATRIBUTOS
     private String especialidad;
 
-    public Profesor(String nombre, int edad, Direccion direccion, String especialidad) {
-        super(nombre, edad, direccion);
+    //CONSTRUCTORES
+    public Profesor(String nombre, String edad, String dni, Direccion direccion, String especialidad)
+    throws NombreException, EdadException, DniException {
+        super(nombre, edad, dni, direccion);
         setEspecialidad(especialidad);
     }
-    public Profesor(String nombre, int edad, String especialidad) {
-        super(nombre, edad);
-        setEspecialidad(especialidad); 
-        setDireccion(null);
-    }
+    //MÉTODOS
 
-    public void mostrarInformacion(){
-        System.out.println("Profesor");
-        trabajar();
-    }
-
-
+    //GETTERS & SETTERS
     public String getEspecialidad() {
         return especialidad;
     }
@@ -29,14 +25,11 @@ public class Profesor extends Persona implements Trabajador{
         this.especialidad = especialidad;
     }
 
-    @Override
-    public void trabajar() {
-        System.out.printf("%s está enseñando %s.", this.getNombre(), this.especialidad);
-    }
+    //TOSTRING
     @Override
     public String toString() {
-        return "Profesor [especialidad: " + especialidad + ", Nombre: " + getNombre() + ", Edad: " + getEdad()
-                + "]";
+        return "Nombre: " + this.getNombre() + "\nEdad: " + this.getEdad() + "\nDNI: " + this.getDni() + 
+        "\nEspecialidad: " + this.especialidad + "\n";
     }
 
 

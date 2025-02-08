@@ -5,15 +5,10 @@ public class Direccion {
     private String ciudad;
     private String codigoPostal;
 
-    
-    
-    public Direccion() {
-    }
-
-    public Direccion(String calle, String ciudad, String codigoPostal) {
-        this.calle = calle;
-        this.ciudad = ciudad;
-        this.codigoPostal = codigoPostal;
+    public Direccion(String calle, String ciudad, String codigoPostal){
+        this.setCalle(calle);
+        this.setCiudad(ciudad);
+        this.setCodigoPostal(codigoPostal);
     }
 
     public String getCalle() {
@@ -42,6 +37,6 @@ public class Direccion {
 
     @Override
     public String toString() {
-        return "Direccion [calle=" + calle + ", ciudad=" + ciudad + ", codigoPostal=" + codigoPostal + "]";
+        return "Calle: " + calle + "\nCiudad: " + ciudad + "\nCodigo postal:" + codigoPostal + "\n";
     }
 }

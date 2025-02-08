@@ -1,22 +1,16 @@
 package clases;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Curso{
-    // ATRIBUTOS
+    //ATRIBUTOS
     private String nombreCurso;
     private Profesor profesor;
     private ArrayList<Estudiantes> estudiantes = new ArrayList<Estudiantes>();
     private static ArrayList<Curso> cursos = new ArrayList<Curso>();
-    
-    // CONSTRUCTORES
-    public Curso(String nombreCurso) {
-        setNombreCurso(nombreCurso);
-        
-        cursos.add(this);
-    }
 
+    
+    //CONSTRUCTORES
     public Curso(String nombreCurso, Profesor profesor, ArrayList<Estudiantes> estudiantes) {
         setNombreCurso(nombreCurso);
         setProfesor(profesor);
@@ -45,13 +39,20 @@ public class Curso{
     }
 
     public static void mostrarCursos(){
+        System.out.println("=======CURSOS=======");
         for (Curso c : cursos) {
-            System.out.println(c.toString());
+            System.out.printf("-- %s --\n", c.getNombreCurso().toUpperCase());
+            System.out.println("PROFESOR:");
+            System.out.println(c.profesor.getNombre());
+            System.out.println("ESTUDIANTES:");
+            for(Estudiantes est : c.estudiantes){
+                System.out.println(est.toString());
+            }
             System.out.println();
         }
     }
 
-    // GETTERS & SETTERS
+    //GETTERS & SETTERS
     public String getNombreCurso() {
         return nombreCurso;
     }
@@ -76,11 +77,10 @@ public class Curso{
         this.estudiantes = estudiantes;
     }
 
-    // TO STR
+    //TOSTRING
     @Override
     public String toString() {
-        return "Curso [nombreCurso=" + nombreCurso + ", profesor=" + profesor + ", estudiantes="
-                + estudiantes.toString() + "]";
+        return "Curso: " + this.nombreCurso + "\nProfesor: " + profesor.getNombre() + "\n";
     }
     
 }

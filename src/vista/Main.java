@@ -9,114 +9,44 @@ import clases.Persona;
 import clases.Profesor;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
-        // ejercicio1();
-        // ejercicio2();
-        // ejercicio3();
-        // ejercicio4();
-        // ejercicio5();
-        // ejercicio6();
-        // ejercicio7();
-        // ejercicio8();
-        ejercicio9();
+    public static void main(String[] args){
+        /*
+         * Se comprueba:
+         *  Nombre: longitud de cadena y que sean letras.
+         *  Edad: Que la cadena pueda ser un número de 10 a 90
+         *  DNI: Que la cadena tenga un tamaño de 9 caracteres, que los 8 primeros sean dígitos y el último una letra.
+         *       No compruebo que sea válido con el %23 y la posición de la letra para realizar pruebas, pero está hecho y comentado
+         *       en el setDni().
+         *       Que no exista ninguna persona con ese DNI.
+         * 
+         * Contiene:
+         * ArrayList estáticos que almacena las personas y cursos que se instancian.
+         * Métodos estáticos que imprime las personas y cursos. 
+         */
+        try {
+            Estudiantes e1 = new Estudiantes("Juan", "22", "12245678C", new Direccion("calle Sin Salida", "Alicante", "03001"), "Derecho");
+            Estudiantes e2 = new Estudiantes("Alberto", "25", "13345678C", new Direccion("calle Chipiona", "Alicante", "03001"), "Derecho");
+            Estudiantes e3 = new Estudiantes("Lucia", "23", "18245678C", new Direccion("Avenida Benito", "Alicante", "03001"), "Derecho");
+            Estudiantes e4 = new Estudiantes("Inés", "27", "14345678C", new Direccion("Calle San Juan", "Alicante", "03001"), "Química");
+            Estudiantes e5 = new Estudiantes("Daniel", "24", "15345678C", new Direccion("Calle sin Salida", "Alicante", "03001"), "Química");
+            Profesor p1 = new Profesor("Luis", "49", "16345678C", new Direccion("Calle San Blas", "Alicante", "03001"), "Abogado");
+            Profesor p2 = new Profesor("Noemi", "36", "17345678C", new Direccion("Calle Me la invento", "Alicante", "03001"), "Químico");
+            
+            ArrayList<Estudiantes> estudiantesDerecho = new ArrayList<Estudiantes>();
+            estudiantesDerecho.add(e1); estudiantesDerecho.add(e2); estudiantesDerecho.add(e3);
+            Curso c1 = new Curso("Curso de Derecho", p1, estudiantesDerecho);
 
-    }
+            ArrayList<Estudiantes> estudiantesQuimica = new ArrayList<Estudiantes>();
+            estudiantesQuimica.add(e4); estudiantesQuimica.add(e5);
+            Curso c2 = new Curso("Curso de Química", p2, estudiantesQuimica);
 
-    static void ejercicio1() {
-        Persona persona = new Persona("Juan", 20);
-        System.out.println(persona.toString());
-    }
 
-    static void ejercicio2() {
-        Persona persona = new Persona("Juan", 20);
-        Persona persona2 = new Persona("Juan", 25);
-        persona2.setEdad(20);
-
-        System.out.println(persona.equals(persona2));
-    }
-
-    static void ejercicio3() {
-        Persona p = new Estudiantes("Evaristo", 80,"Medicina");
-        System.out.println(p.toString());
-    }
-
-    static void ejercicio4() {
-        Estudiantes p = new Estudiantes("Evaristo", 80,"Medicina");
-        System.out.println(p.estudiar());
-    }
-
-    static void ejercicio5() {
-        Profesor p = new Profesor("Edmundo", 55, "Religión");
-        p.trabajar();
-    }
-
-    static void ejercicio6(){
-        Persona p = new Profesor("María", 50, "Lengua italiana");
-        Persona e = new Estudiantes("Juan", 20,"Filología");
-        Persona pe = new Persona("Antonio", 30);
-
-        Persona[] arRPersonas = {pe, e, p};
-
-        for(Persona el : arRPersonas){
-            el.mostrarInformacion();
+            Persona.mostrarPersonas();
             System.out.println();
+            Curso.mostrarCursos();
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-    }
-
-    static void ejercicio7(){
-        Persona p = new Persona("Pedro", 29, new Direccion("Calle Chipiona", "Cádiz", "11560"));
-        p.mostrarDirección();
-    }
-
-    static void ejercicio8(){
-        Persona personaMayor = new Persona("Consolación", 84);
-        Persona personaAdulta = new Persona("Daniel", 31);
-        Persona personaJoven = new Persona("Rodrigo", 20);
-        Persona personaJoven2 = new Persona("Daniel", 20);
-
-        System.out.println(personaMayor.compareTo(personaJoven));
-        System.out.println(personaJoven.compareTo(personaJoven2));
-        System.out.println(personaAdulta.compareTo(personaMayor));
-    }
-
-    public static void ejercicio9(){
-        Curso c1 = new Curso("Curso1");
-
-        Estudiantes e1 = new Estudiantes("Carlos", 27, "Medicina");
-        Estudiantes e2 = new Estudiantes("Juan", 29, "Medicina");
-        Estudiantes e3 = new Estudiantes("Susana", 21, "Medicina");
-
-
-        Estudiantes[] listaEstudiantes = {e1,e2};
-        c1.matricularEstudiantes(listaEstudiantes);
-        c1.matricularEstudiantes(e3);
-
-        Profesor profesor = new Profesor("Joaquin", 54, "Medicina");
-        c1.setProfesor(profesor);
-
-        c1.mostrarEstudiantes();
-        c1.mostrarProfesor();
-
-
-        Estudiantes ee1 = new Estudiantes("Juan Carlos", 21, "Arquitectura");
-        Estudiantes ee2 = new Estudiantes("Ramón", 23, "Arquitectura");
-        Estudiantes ee3 = new Estudiantes("María", 25, "Arquitectura");
-
-        ArrayList<Estudiantes> estudiantes = new ArrayList<Estudiantes>();
-        estudiantes.add(ee1); estudiantes.add(ee2); estudiantes.add(ee3);
-        Profesor p = new Profesor("Adolfo", 41, "Arquitecto");
-
-        Curso c2 = new Curso("Curso2", p, estudiantes);
-
-        System.out.println("====LISTA DE CURSOS====");
-        Curso.mostrarCursos();
-
-        //CAMBIO NOMBRE DE CURSO1 Y VUELVO A IMPRIMIR LA LISTA DE CURSOS;
-        System.out.println("====LISTA DE CURSOS====");
-        c1.setNombreCurso("Curso cambiado");
-        Curso.mostrarCursos();
-
-
-        
     }
 }

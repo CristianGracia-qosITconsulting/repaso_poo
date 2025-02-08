@@ -1,19 +1,21 @@
 package clases;
 
+import excepciones.DniException;
+import excepciones.EdadException;
+import excepciones.NombreException;
+
 public class Estudiantes extends Persona{
-    
+    //ATRIBUTOS
     private String carrera;
-
-    public Estudiantes(String nombre, int edad, Direccion direccion, String carrera) {
-        super(nombre, edad, direccion);
+    
+    //CONSTRUCTORES
+    public Estudiantes(String nombre, String edad, String dni, Direccion direccion, String carrera)
+    throws NombreException, EdadException, DniException {
+        super(nombre, edad, dni, direccion);
         this.setCarrera(carrera);
     }
-    public Estudiantes(String nombre, int edad, String carrera) {
-        super(nombre, edad);
-        this.setCarrera(carrera);
-        this.setDireccion(null);
-    }
 
+    //METODOS
     public void mostrarInformacion(){
         System.out.println("Estudiante");
     }
@@ -23,6 +25,7 @@ public class Estudiantes extends Persona{
         return this.getNombre() + " está estudiando " + this.getCarrera();
     }
 
+    //GETTERS & SETTERS
     public String getCarrera() {
         return carrera;
     }
@@ -31,10 +34,11 @@ public class Estudiantes extends Persona{
         this.carrera = carrera;
     }
 
-
+    //TO STRING
     @Override
     public String toString() { 
-        return "Estudiantes [" + super.toString() + "carrera=" + this.carrera + "]";
+        return "Nombre: " + this.getNombre() + "\nEdad: " + this.getEdad() + "\nDNI: " + this.getDni() + 
+        "\nCarrera: " + this.carrera + "\n";
     }
 
     
