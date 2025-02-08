@@ -8,21 +8,16 @@ public class Curso{
     private String nombreCurso;
     private Profesor profesor;
     private ArrayList<Estudiantes> estudiantes = new ArrayList<Estudiantes>();
-    private static ArrayList<Curso> cursos = new ArrayList<Curso>();
     
     // CONSTRUCTORES
     public Curso(String nombreCurso) {
         setNombreCurso(nombreCurso);
-        
-        cursos.add(this);
     }
 
     public Curso(String nombreCurso, Profesor profesor, ArrayList<Estudiantes> estudiantes) {
         setNombreCurso(nombreCurso);
         setProfesor(profesor);
         setEstudiantes(estudiantes);
-
-        cursos.add(this);
     }
     //METODOS
     public void matricularEstudiantes(Estudiantes e){
@@ -42,13 +37,6 @@ public class Curso{
 
     public void mostrarProfesor(){
         System.out.println(this.profesor.toString());
-    }
-
-    public static void mostrarCursos(){
-        for (Curso c : cursos) {
-            System.out.println(c.toString());
-            System.out.println();
-        }
     }
 
     // GETTERS & SETTERS
